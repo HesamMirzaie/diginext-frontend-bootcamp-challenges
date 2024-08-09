@@ -43,18 +43,16 @@ function revertFlatten(object) {
   let result = {};
 
   for (const key in object) {
-    const keys = key.split('.'); // Split the key by '.'
+    const keys = key.split('.');
     let current = result;
 
-    // Iterate through all keys except the last one
     for (let i = 0; i < keys.length - 1; i++) {
       if (!current[keys[i]]) {
-        current[keys[i]] = {}; // Create a new nested object if it doesn't exist
+        current[keys[i]] = {};
       }
-      current = current[keys[i]]; // Move to the next level
+      current = current[keys[i]];
     }
 
-    // Set the value at the deepest level
     current[keys[keys.length - 1]] = object[key];
   }
 
