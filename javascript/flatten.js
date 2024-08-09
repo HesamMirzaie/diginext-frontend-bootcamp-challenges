@@ -25,19 +25,9 @@ function flatten(object) {
   return result;
 }
 
-const obj = {
-  a: 1,
-  b: [2, 3],
-  c: {
-    d: 4,
-    e: [5, 6],
-    f: {
-      g: 7,
-    },
-  },
-};
+const obj = flatten({ a: { b: { c: 'd' } } });
 const result = flatten(obj);
-console.log(result);
+// console.log(result);
 
 /**
  * Returns a nested object. Remember that the level of nesting is not specified.
@@ -70,3 +60,4 @@ function revertFlatten(object) {
 
   return result;
 }
+console.log(revertFlatten({ 'a.b.c': 'd' }));
