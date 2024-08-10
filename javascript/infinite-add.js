@@ -3,7 +3,7 @@
  * The result of the last call should be parsable as both number or string.
  * Use case: No use case. Just sth fun :)))))
  */
-function add() {
+function add(...args) {
   // TODO: Implement here
 }
 
