@@ -6,10 +6,10 @@
 //  *
 //  * @returns An Literal exact copy of the arg
 //  */
-// function deepClone(arg) {
-//   // TODO: Implement here
-//   return structuredClone(arg);
-// }
+function deepClone(arg) {
+  // TODO: Implement here
+  return structuredClone(arg);
+}
 
 // const arr = [
 //   {
