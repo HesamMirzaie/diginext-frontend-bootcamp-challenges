@@ -1,21 +1,21 @@
-// function throttle(callback, n, p) {
-//   let timeout = null;
-//   let callCount = 0;
+function throttle(callback, n, p) {
+  let timeout = null;
+  let callCount = 0;
 
-//   return () => {
-//     if (!timeout) {
-//       callback();
-//       callCount += 1;
+  return () => {
+    if (!timeout) {
+      callback();
+      callCount += 1;
 
-//       if (callCount >= n) {
-//         timeout = setTimeout(() => {
-//           timeout = null;
-//           callCount = 0;
-//         }, p);
-//       }
-//     }
-//   };
-// }
+      if (callCount >= n) {
+        timeout = setTimeout(() => {
+          timeout = null;
+          callCount = 0;
+        }, p);
+      }
+    }
+  };
+}
 
 // const throttledCallback = throttle(myCallback, 3, 1000);
 // throttledCallback();
@@ -39,25 +39,24 @@
 function advancedThrottle(callback, n, p, blockTime, exponent) {
   let timeout = null;
   let callCount = 0;
+  let currBlockTime = blockTime;
   return () => {
     if (!timeout) {
-      setTimeout(() => {
-        callback();
-        callCount += 1;
-      }, blockTime * exponent);
+      callback();
+      callCount += 1;
+
       if (callCount >= n) {
         timeout = setTimeout(() => {
           timeout = null;
           callCount = 0;
+          currBlockTime = blockTime;
         }, p);
+      } else {
+        timeout = setTimeout(() => {
+          timeout = null;
+          currBlockTime *= exponent;
+        }, currBlockTime);
       }
     }
-    exponent = blockTime * exponent;
   };
 }
-
-const callback = () => console.log(12);
-
-const throttledCallback = advancedThrottle(callback, 3, 10, 10, 2);
-
-btn.addEventListener('click', throttledCallback());

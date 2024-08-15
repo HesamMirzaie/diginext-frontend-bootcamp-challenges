@@ -7,10 +7,8 @@
 function add(...args) {
   let sum = args.reduce((acc, curr) => acc + curr, 0);
 
-  function innerAdd(...innerArgs) {
-    // if (innerArgs.length === 0) return sum;
-    sum = innerArgs.reduce((acc, curr) => acc + curr, sum);
-    console.log({ sum });
+  function innerAdd(innerArgs) {
+    sum += innerArgs;
     return add;
   }
 

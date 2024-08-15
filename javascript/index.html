@@ -6,7 +6,25 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="btn">Click to log</button>
-    <script src="challenge.js"></script>
+    <div id="select">
+      <h1>1</h1>
+      <h1>2</h1>
+      <h1>3</h1>
+      <h1>4</h1>
+      <h2>5</h2>
+    </div>
+
+    <script>
+      function delecration(e) {
+        const target = e.target;
+        if (target.tagName === 'H1') {
+          document.body.style.backgroundColor = 'green';
+        } else {
+          document.body.style.backgroundColor = 'red';
+        }
+      }
+      const select = document.querySelector('#select');
+      select.addEventListener('click', (e) => delecration(e));
+    </script>
   </body>
 </html>
