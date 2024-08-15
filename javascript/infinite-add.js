@@ -5,22 +5,32 @@
  */
 
 function add(...args) {
-  const sum = args.reduce((acc, curr) => acc + curr, 0);
+  let sum = args.reduce((acc, curr) => acc + curr, 0);
+
   function innerAdd(...innerArgs) {
-    if (innerArgs.length === 0) return sum;
-    const newSum = sum + innerArgs.reduce((acc, curr) => acc + curr, 0);
-    return add(newSum);
+    // if (innerArgs.length === 0) return sum;
+    sum = innerArgs.reduce((acc, curr) => acc + curr, sum);
+    console.log({ sum });
+    return add;
   }
 
-  console.log(sum);
+  add.valueOf = () => {
+    return sum;
+  };
+  innerAdd.valueOf = () => {
+    return sum;
+  };
   return innerAdd;
 }
 
 // Call Examples
-console.log(add(1, 2)); // Output: 3
-console.log('------------------------');
-console.log(add(1, 2)(3)); // Output: 6
-console.log('------------------------');
-console.log(add(1, 2)(3)(4, 5)); // Output: 15
-console.log('------------------------');
-console.log(add(1, 2)(3)(4, 5)(6)); // Output: 21
+// console.log(add(1, 2)); // Output: 3
+// console.log('------------------------');
+// console.log(add(1, 2)(3)); // Output: 6
+// console.log('------------------------');
+// console.log(add(1, 2)(3)(4, 5)); // Output: 15
+// console.log('------------------------');
+// console.log(add(1, 2)(3)(4, 5)(6)); // Output: 21
+
+console.log(add(1, 2)(3)(4, 5)(6) + add(1, 2)(3)(4, 5)(6));
+// console.log(add(1, 2) + add(3));

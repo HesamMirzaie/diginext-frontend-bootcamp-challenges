@@ -6,13 +6,11 @@
 //  *
 //  * @returns An Literal exact copy of the arg
 //  */
-const deepClone = function (arg) {
+const deepClone = (arg) => {
   const newArr = [];
-  for (item of arg) {
-    newArr.push(item);
-  }
-  newArr[0].name = 'Emad';
-  return newArr;
+  arg.forEach((element) => {
+    newArr.push(element);
+  });
 };
 
 const arr = [
@@ -41,5 +39,6 @@ const arr = [
     ],
   },
 ];
+const newArr = deepClone(arr);
+console.log(newArr);
 console.log(arr);
-console.log(deepClone(arr));
